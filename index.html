@@ -1,25 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <script type="text/javascript">
-    (function(c,l,a,r,i,t,y){
-        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-    })(window, document, "clarity", "script", "w1te3v98or");
-</script>
-  <meta name="google-site-verification" content="UkfyIfmWbMgdwOxFnWUzjyn5l3i801FPD_al8dt4RsE" />
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
   <title>TikVoid — Clean TikTok Video Saver</title>
-  <meta name="description" content="TikVoid is a clean, fast, mobile-first TikTok video saver with a premium interface and smooth experience." />
-  <meta name="keywords" content="TikVoid, TikTok saver, TikTok downloader, mobile video saver, TikTok mp4" />
+
+  <!-- SEO -->
+  <meta name="description" content="TikVoid is a clean, fast TikTok video saver." />
+  <meta name="keywords" content="TikTok downloader, no watermark, TikVoid" />
   <meta name="author" content="JaylonVoid" />
   <meta name="robots" content="index, follow" />
-  <link rel="canonical" href="https://tikvoid.netlify.app" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap" rel="stylesheet" />
+
+  <!-- FIXED canonical -->
+  <link rel="canonical" href="https://jaylon-code-byte.github.io/tikvoid-/" />
+
+  <!-- ONE FONT ONLY (faster) -->
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <!-- Clarity -->
+  <script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+      c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+      t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+      y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "w1te3v98or");
+  </script>
 
   <style>
     :root {
@@ -56,19 +62,8 @@
       background: var(--bg-deep);
       color: var(--text-primary);
       font-family: 'DM Sans', -apple-system, sans-serif;
-      padding: 0 16px 60px;
+      padding: 0 clamp(12px, 3vw, 40px) 80px;
       overflow-x: hidden;
-    }
-
-    /* ─── NOISE TEXTURE OVERLAY ─── */
-    body::before {
-      content: '';
-      position: fixed;
-      inset: 0;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
-      pointer-events: none;
-      z-index: 0;
-      opacity: 0.5;
     }
 
     /* ─── AMBIENT GLOWS ─── */
@@ -103,16 +98,42 @@
 
     .container {
       width: 100%;
-      max-width: 720px;
+      max-width: 1200px;
       margin: 0 auto;
       position: relative;
       z-index: 1;
     }
 
+    /* ─── DESKTOP TWO-COLUMN GRID ─── */
+    .main-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+
+    @media (min-width: 720px) {
+      .main-grid {
+        grid-template-columns: 1fr 1fr;
+        align-items: start;
+        gap: 20px;
+      }
+
+      .col-left { display: flex; flex-direction: column; gap: 16px; }
+      .col-right { display: flex; flex-direction: column; gap: 16px; }
+    }
+
+    /* Tablet single-column — keep things tight, not bloated */
+    @media (min-width: 601px) and (max-width: 719px) {
+      .container { max-width: 560px; }
+      .header { padding: 36px 0 22px; }
+      .download-card, .how-section, .result-card, .pro-section { padding: 20px; }
+      .pro-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
     /* ─── HEADER ─── */
     .header {
       text-align: center;
-      padding: 52px 0 32px;
+      padding: clamp(28px, 5vw, 64px) 0 clamp(20px, 3vw, 40px);
       animation: slideDown 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
     }
 
@@ -189,12 +210,12 @@
 
     .logo {
       font-family: 'Syne', sans-serif;
-      font-size: clamp(48px, 11vw, 72px);
+      font-size: clamp(48px, 7vw, 108px);
       font-weight: 800;
-      letter-spacing: -0.05em;
+      letter-spacing: -0.04em;
       line-height: 1;
       margin-bottom: 14px;
-      background: linear-gradient(135deg, #ffffff 0%, #b8d8ff 40%, #00c8ff 100%);
+      background: linear-gradient(90deg, #e8f4ff 0%, #b8d8ff 40%, #00c8ff 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
@@ -260,7 +281,7 @@
     }
 
     .download-card {
-      padding: 28px;
+      padding: clamp(20px, 3vw, 36px);
       margin-top: 8px;
       animation: fadeUp 0.7s 0.1s cubic-bezier(0.22, 1, 0.36, 1) both;
     }
@@ -452,8 +473,8 @@
 
     /* ─── HOW IT WORKS ─── */
     .how-section {
-      margin-top: 24px;
-      padding: 28px;
+      margin-top: 0;
+      padding: clamp(20px, 3vw, 36px);
       animation: fadeUp 0.7s 0.2s cubic-bezier(0.22, 1, 0.36, 1) both;
     }
 
@@ -624,8 +645,8 @@
     /* ─── RESULT ─── */
     .result-card {
       display: none;
-      margin-top: 18px;
-      padding: 24px;
+      margin-top: 0;
+      padding: clamp(20px, 3vw, 36px);
       animation: fadeUp 0.35s cubic-bezier(0.22,1,0.36,1) both;
     }
 
@@ -903,8 +924,8 @@
 
     /* ─── PRO SECTION ─── */
     .pro-section {
-      margin-top: 18px;
-      padding: 26px;
+      margin-top: 0;
+      padding: clamp(20px, 3vw, 36px);
       animation: fadeUp 0.7s 0.3s cubic-bezier(0.22,1,0.36,1) both;
     }
 
@@ -1017,21 +1038,66 @@
 
     /* ─── MOBILE ─── */
     @media (max-width: 600px) {
-      body { padding: 0 12px 50px; }
+      body { padding: 0 10px 50px; }
+
+      .header { padding: 28px 0 20px; }
+
+      .status-dot-row { margin-bottom: 18px; }
+
+      .brand-icon-inner { width: 54px; height: 54px; border-radius: 16px; margin-bottom: 12px; }
+
+      .no-wm-headline { font-size: 14px; margin-bottom: 8px; }
+
+      .tagline { font-size: 14px; margin-bottom: 16px; }
+
+      .hero-chips { gap: 6px; }
+      .hero-chip { font-size: 11px; padding: 6px 11px; }
 
       .download-card, .how-section, .result-card, .helper-card, .pro-section {
-        padding: 20px;
+        padding: 16px;
       }
 
+      .main-grid { gap: 12px; }
+
+      .card-header h2 { font-size: 15px; }
+
+      .fetch-btn { padding: 15px 16px; font-size: 14px; }
+
       .pill-btns { flex-direction: row; }
+      .pill-btn { padding: 8px 11px; font-size: 12px; }
 
-      .stats-row { grid-template-columns: 1fr; }
+      .stats-row { grid-template-columns: repeat(3, 1fr); gap: 8px; }
+      .stat-box { padding: 10px 6px; }
+      .stat-box span { font-size: 13px; }
+      .stat-box small { font-size: 9px; }
 
-      .pro-grid { grid-template-columns: 1fr; }
+      .pro-grid { grid-template-columns: repeat(2, 1fr); gap: 8px; }
+      .pro-item { padding: 12px; }
+      .pro-item-icon { width: 26px; height: 26px; margin-bottom: 8px; }
+      .pro-item strong { font-size: 12px; }
+      .pro-item span { font-size: 11px; }
 
-      .hint-row { flex-direction: column; align-items: flex-start; }
+      .hint-row { flex-direction: column; align-items: flex-start; gap: 8px; }
+      .hint { font-size: 11px; }
 
-      .how-step { flex-direction: row; }
+      .how-step { flex-direction: row; padding: 12px; }
+      .step-num { width: 30px; height: 30px; font-size: 12px; border-radius: 8px; }
+      .step-body strong { font-size: 13px; }
+      .step-body p { font-size: 12px; }
+      .step-icon { display: none; }
+
+      .section-label h2 { font-size: 15px; }
+
+      .result-label { font-size: 14px; }
+      .video-title-text { font-size: 15px; }
+
+      .save-btn { padding: 14px 16px; font-size: 14px; }
+
+      footer { padding: 22px 0 6px; font-size: 11px; }
+    }
+
+    @media (min-width: 720px) and (max-width: 1024px) {
+      .download-card, .how-section, .result-card, .pro-section { padding: 22px; }
     }
   </style>
 </head>
@@ -1082,7 +1148,10 @@
     </header>
 
     <!-- ══════════ DOWNLOAD CARD ══════════ -->
-    <section class="card download-card">
+    <div class="main-grid">
+      <div class="col-left">
+
+        <section class="card download-card">
       <div class="card-header">
         <h2>Paste a TikTok link</h2>
         <span class="instant-badge">Instant fetch</span>
@@ -1225,6 +1294,10 @@
       <button id="hideHelperBtn" class="ghost-btn" type="button">Hide helper</button>
     </section>
 
+      </div><!-- /col-left -->
+
+      <div class="col-right">
+
     <!-- ══════════ HOW IT WORKS ══════════ -->
     <section class="card how-section">
       <div class="section-label">
@@ -1309,12 +1382,15 @@
           <span>Exclusive UI perks and power-user convenience features.</span>
         </div>
       </div>
-    </section>
+    </section><!-- /pro-section -->
+
+      </div><!-- /col-right -->
+    </div><!-- /main-grid -->
 
     <!-- ══════════ FOOTER ══════════ -->
     <footer>
       <p>© 2025 TikVoid — Not affiliated with TikTok or ByteDance.</p>
-      <p style="margin-top:6px">Crafted by <a href="#">JaylonVoid</a></p>
+      <p style="margin-top:6px">Crafted by <span style="color:var(--accent);font-weight:600;">JaylonVoid</span></p>
     </footer>
 
   </div><!-- /container -->
@@ -1341,6 +1417,7 @@
     let currentVideoUrl = '';
 
     pasteBtn.addEventListener('click', async () => {
+      clarity('event', 'paste_click');
       try {
         const text = await navigator.clipboard.readText();
         urlInput.value = text;
@@ -1359,7 +1436,10 @@
       hideError();
     });
 
-    downloadBtn.addEventListener('click', handleDownload);
+    downloadBtn.addEventListener('click', () => {
+      clarity('event', 'fetch_click');
+      handleDownload();
+    });
     urlInput.addEventListener('keypress', (e) => { if (e.key === 'Enter') handleDownload(); });
     hideHelperBtn.addEventListener('click', () => { instructionCard.style.display = 'none'; });
 
@@ -1415,39 +1495,58 @@
       showLoading();
       setLoading(true);
 
-      const data = await fetchVideoData(url);
+      try {
+        clarity('event', 'fetch_start');
 
-      hideLoading();
-      setLoading(false);
+        const data = await fetchVideoData(url);
 
-      if (data?.videoUrl) {
-        currentVideoUrl = data.videoUrl;
-        videoPlayer.src = data.videoUrl;
-        videoPlayer.load();
+        hideLoading();
+        setLoading(false);
 
-        videoTitle.textContent = data.title;
-        videoAuthor.innerHTML = `
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
-            <circle cx="12" cy="7" r="4"/>
-          </svg>
-          @${escapeHtml(data.author)}`;
+        if (data?.videoUrl) {
+          clarity('event', 'fetch_success');
 
-        likesCount.textContent = formatNum(data.likes);
-        commentsCount.textContent = formatNum(data.comments);
-        playsCount.textContent = formatNum(data.plays);
+          currentVideoUrl = data.videoUrl;
+          videoPlayer.src = data.videoUrl;
+          videoPlayer.load();
 
-        directDownloadLink.href = currentVideoUrl;
-        directDownloadLink.download = `tikvoid_${Date.now()}.mp4`;
+          videoTitle.textContent = data.title;
+          videoAuthor.innerHTML = `
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+              <circle cx="12" cy="7" r="4"/>
+            </svg>
+            @${escapeHtml(data.author)}`;
 
-        showResult();
-      } else {
+          likesCount.textContent = formatNum(data.likes);
+          commentsCount.textContent = formatNum(data.comments);
+          playsCount.textContent = formatNum(data.plays);
+
+          directDownloadLink.href = currentVideoUrl;
+          directDownloadLink.download = `tikvoid_${Date.now()}.mp4`;
+
+          showResult();
+        } else {
+          clarity('event', 'fetch_failed');
+          showError('Could not fetch this video. Please check the link and try again.');
+        }
+      } catch (error) {
+        clarity('event', 'fetch_failed');
+        hideLoading();
+        setLoading(false);
         showError('Could not fetch this video. Please check the link and try again.');
       }
     }
 
     saveVideoBtn.addEventListener('click', () => {
-      if (!currentVideoUrl) { showError('No video loaded. Paste a TikTok link first.'); return; }
+      clarity('event', 'save_click');
+
+      if (!currentVideoUrl) {
+        showError('No video loaded. Paste a TikTok link first.');
+        return;
+      }
+
+      clarity('event', 'save_success');
       blobDownload(currentVideoUrl);
     });
 
