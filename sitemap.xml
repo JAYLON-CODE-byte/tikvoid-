@@ -1,16 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-
   <url>
-    <loc>https://jaylon-code-byte.github.io/tikvoid-/</loc>
+    <loc>https://tikvoid.vercel.app/</loc>
   </url>
-
   <url>
-    <loc>https://jaylon-code-byte.github.io/tikvoid-/download-tiktok-no-watermark.html</loc>
+    <loc>https://tikvoid.vercel.app/download-tiktok-no-watermark.html</loc>
   </url>
-
   <url>
-    <loc>https://jaylon-code-byte.github.io/tikvoid-/tiktok-hd-downloader.html</loc>
+    <loc>https://tikvoid.vercel.app/tiktok-hd-downloader.html</loc>
   </url>
-
 </urlset>
